@@ -1,36 +1,55 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import './App.css';
-import {Counter} from "./components/Counter/Counter";
-import {v1} from "uuid";
+
 
 
 
 function App() {
-    const title: string = "Counter"
-    const startCounter = 0;
-    const endCounter = 5;
 
-    const [counter, setCounter] = useState<number>(startCounter);
 
-    function addIncr ()  {
-        if(counter < endCounter){
-            setCounter (counter + 1)
-        }
+    const [counter, setCounter] = useState(0)
+    const onClickHandler = () => {
+        if(counter < endCounter)
+        setCounter(counter+1)
+    }
+    const onClickHandlerDel = () => {
+        setCounter(0)
     }
 
-    function  clearCounter () {
+    const [startCounter, setStartCounter] = useState(0)
+
+    const onChangeCounterStart = (e: ChangeEvent<HTMLInputElement>) => {
+        setStartCounter(+e.currentTarget.value)
+    }
+    const onClickHandlerSet = () => {
         setCounter(startCounter)
+    }
+
+    const [endCounter, setEndCounter] = useState(0)
+    const onChangeCounterEnd = (e: ChangeEvent<HTMLInputElement>) => {
+        setEndCounter(+e.currentTarget.value)
     }
 
 
   return (
     <div className="App">
-        <Counter
-            counter={counter}
-            title={title}
-            addIncr={addIncr}
-            clearCounter={clearCounter}
-        />
+
+
+        <div>
+            <div>
+                <div>Max<input type="number" onChange={onChangeCounterEnd}/></div>
+                <div>Min <input type="number" onChange={onChangeCounterStart}/></div>
+                <button onClick={onClickHandlerSet}>Set</button>
+            </div>
+        </div>
+
+        <div>
+            <div>{counter}</div>
+            <div>
+                <button onClick={onClickHandler}>Add</button>
+                <button onClick={onClickHandlerDel}>clean</button>
+            </div>
+        </div>
     </div>
   );
 }
