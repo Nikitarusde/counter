@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import './App.css';
 import {Setting} from "./components/setting/Setting";
 import {Counter} from "./components/counter/Counter";
@@ -13,14 +13,40 @@ function App() {
 
     const [endCounter, setEndCounter] = useState<number>(0)
 
+    useEffect(() => {
+        let counterValueStart = localStorage.getItem("counterValue")
+        if (counterValueStart) {
+            let newCounterValueStart = JSON.parse(counterValueStart)
+            setStartCounter(newCounterValueStart)
+            setCounter(newCounterValueStart)
+        }
+    }, [])
+
+    useEffect(() => {
+        let counterValueEnd = localStorage.getItem("counterValueEnd")
+        if (counterValueEnd) {
+            let newCounterValueStart = JSON.parse(counterValueEnd)
+            setEndCounter(newCounterValueStart)
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem("counterValue", JSON.stringify(startCounter))
+    }, [startCounter])
+
+    useEffect(() => {
+        localStorage.setItem("counterValueEnd", JSON.stringify(endCounter))
+    }, [endCounter])
+
+
+
     const onClickHandler = () => {
         if (counter < endCounter)
             setCounter(counter + 1)
-
     }
 
     const onClickHandlerDel = () => {
-        setCounter(0)
+        setCounter(startCounter)
     }
 
 
