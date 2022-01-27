@@ -19,12 +19,16 @@ export const Setting = ({onChangeCounterStart, onChangeCounterEnd, onClickHandle
                     <div className={"blockText"}>Max
                         <input type="number"
                                className={startCounter === endCounter || endCounter < 0 ? "inputError" : "input"}
-                               onChange={onChangeCounterEnd}/>
+                               onChange={onChangeCounterEnd}
+                                value={endCounter}
+                        />
                     </div>
                     <div className={"blockText"}>Min
                         <input type="number"
                                className={startCounter === endCounter || startCounter > endCounter || startCounter < 0 ? "inputError" : "input"}
-                               onChange={onChangeCounterStart}/>
+                               onChange={onChangeCounterStart}
+                               value={startCounter}
+                        />
                     </div>
                 </div>
                 <Button name={"Set"}
