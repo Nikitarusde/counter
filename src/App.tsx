@@ -8,8 +8,6 @@ function App() {
 
 
     const [counter, setCounter] = useState(0)
-    const [error, setError] = useState(false)
-
 
     const [startCounter, setStartCounter] = useState(0)
 
@@ -18,10 +16,8 @@ function App() {
     const onClickHandler = () => {
         if (counter < endCounter)
             setCounter(counter + 1)
+
     }
-
-
-
 
     const onClickHandlerDel = () => {
         setCounter(0)
@@ -44,15 +40,18 @@ function App() {
         <div className="App">
 
             <Setting
+                startCounter={startCounter}
+                endCounter={endCounter}
                 onChangeCounterStart={onChangeCounterStart}
                 onChangeCounterEnd={onChangeCounterEnd}
                 onClickHandlerSet={onClickHandlerSet}
             />
             <Counter
-                error={error}
+                endCounter={endCounter}
                 counter={counter}
                 onClickHandler={onClickHandler}
                 onClickHandlerDel={onClickHandlerDel}
+                startCounter={startCounter}
             />
 
 

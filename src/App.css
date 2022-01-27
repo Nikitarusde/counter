@@ -31,16 +31,31 @@
 .blockInput {
     align-items: center;
 }
+
 .blockText {
-  color: #FF4820;
+    color: #FF4820;
+    font-size: 20px;
 }
 
 .input {
-
+    font-size: 16px;
     text-align: center;
     color: #FFFFFF;
     background: none;
     border: 2px solid #1970D0;
+    box-sizing: border-box;
+    border-radius: 30px;
+    margin: 5px;
+    height: 40px;
+    width: 250px;
+}
+
+.inputError {
+    font-size: 16px;
+    text-align: center;
+    color: #FF4820;
+    background: none;
+    border: 2px solid #FF4820;
     box-sizing: border-box;
     border-radius: 30px;
     margin: 5px;
@@ -67,6 +82,15 @@
     padding: 10px;
 }
 
+.containerCounterError {
+    border: 4px solid #FF4820;
+    box-sizing: border-box;
+    border-radius: 30px;
+
+    margin: 10px;
+    padding: 10px;
+}
+
 .numberCounter {
     font-size: 50px;
 }
@@ -76,13 +100,29 @@
     width: 140px;
     height: 40px;
     margin: 6px;
-    color: #FFFFFF;
-    background: #FF4820;
+    color: #719BC4;
+    background: #FFFFFF;
     border-radius: 30px;
-    border: 2px solid #719BC4;
+    border: 3px solid #719BC4;
 }
 
 .error {
-    color: red;
+    color: #FF4820;
+    font-size: 50px;
+}
+
+.errorText {
+    color: #FF4820;
+    font-size: 28px;
+}
+
+.disable{
+    width: 140px;
+    height: 40px;
+    margin: 6px;
+    color: #FFFFFF;
+    background: #FF4820;
+    border-radius: 30px;
+    border: 2px solid #FF0000;
 }
 

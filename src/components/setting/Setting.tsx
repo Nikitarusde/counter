@@ -5,19 +5,31 @@ type SettingType = {
     onChangeCounterStart: (e: ChangeEvent<HTMLInputElement>) => void
     onChangeCounterEnd: (e: ChangeEvent<HTMLInputElement>) => void
     onClickHandlerSet: () => void
+    endCounter: number
+    startCounter: number
 }
 
-export const Setting = ({onChangeCounterStart, onChangeCounterEnd, onClickHandlerSet}: SettingType) => {
+export const Setting = ({onChangeCounterStart, onChangeCounterEnd, onClickHandlerSet, startCounter, endCounter}: SettingType) => {
 
 
     return (
         <div className={"setting"}>
 
                 <div className={"blockInput"}>
-                    <div className={"blockText"} >Max<input type="number" className={"input"} onChange={onChangeCounterEnd}/></div>
-                    <div className={"blockText"}>Min <input type="number" className={"input"} onChange={onChangeCounterStart}/></div>
+                    <div className={"blockText"}>Max
+                        <input type="number"
+                               className={startCounter === endCounter || endCounter < 0 ? "inputError" : "input"}
+                               onChange={onChangeCounterEnd}/>
+                    </div>
+                    <div className={"blockText"}>Min
+                        <input type="number"
+                               className={startCounter === endCounter || startCounter > endCounter || startCounter < 0 ? "inputError" : "input"}
+                               onChange={onChangeCounterStart}/>
+                    </div>
                 </div>
-                <Button name={"Set"} callBack={onClickHandlerSet}/>
+                <Button name={"Set"}
+                        callBack={onClickHandlerSet}
+                        disable={startCounter === endCounter || startCounter > endCounter || startCounter < 0 || endCounter < 0}/>
 
         </div>
     );
