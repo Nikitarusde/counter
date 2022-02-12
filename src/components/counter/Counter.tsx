@@ -1,5 +1,8 @@
 import React from 'react';
 import {Button} from "../button/Button";
+import {useSelector} from "react-redux";
+import {rootReduceType} from "../store/Store";
+import {InitialStateType} from "../reducer/Reducer";
 
 
 
@@ -12,8 +15,8 @@ type CounterType = {
     startCounter:number
  }
 
-export const Counter = ({counter, endCounter, onClickHandler, onClickHandlerDel, startCounter}: CounterType) => {
-
+export const Counter = ({counter,endCounter, onClickHandler, onClickHandlerDel, startCounter}: CounterType) => {
+    // const counter = useSelector<rootReduceType, InitialStateType>(state => state.counter);
     return (
         <div className={"counter"}>
             <div className={counter === endCounter || counter === 0  ? "containerCounterError" : "containerCounter"}>
